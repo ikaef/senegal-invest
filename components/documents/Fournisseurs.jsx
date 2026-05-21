@@ -229,7 +229,7 @@ const CATEGORIES = [
         qualite:5, prix_score:4, dispo:4,
         avantages:["JA Solar / LONGi = qualité mondiale (garantie 25 ans)","Prix compétitif vs Europe","Pièces standards mondiaux"],
         limites:["Garantie difficile sans revendeur agréé","Import direct = fret maritime à organiser"],
-        conseil:"Acheter JA Solar ou LONGi via importateur Dakar reconnu = meilleur compromis qualité/prix. Import direct pour > 20 panneaux.",
+        conseil:"Acheter JA Solar ou LONGi via importateur Dakar reconnu = meilleur compromis qualité/prix. Import direct pour &gt; 0 panneaux.",
       },
     ],
     synthese:"Règle d'or : Pompe forage = Lorentz ou Grundfos européenne (critique). Réseau irrigation = Chine direct (économie 800K–1,5M FCFA). Panneaux = JA Solar ou LONGi via importateur Dakar.",

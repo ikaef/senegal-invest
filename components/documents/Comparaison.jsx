@@ -98,7 +98,7 @@ const PALIERS = [
     emplois:10, payback:3.7, recommande:true,
     verdict:"Meilleur ROI. Zone Niayes Mboro intérieur : forage 12m (600K) compense le foncier plus cher. 3 filières complètes. Net An3 ~11,8M FCFA. Capital réel recommandé : 32–33M FCFA.",
     forceA:"Forage court (12m) en Niayes", forceB:"ROI le plus élevé (71%)", forceC:"Meilleur sol maraîcher Sénégal",
-    faibA:"Foncier Niayes (3,5M vs 2M Thiès)", faibB:"Capital réel ~32M (légèrement > 30M)", faibC:"Pas d'export ni hôtels An 1",
+    faibA:"Foncier Niayes (3,5M vs 2M Thiès)", faibB:"Capital réel ~32M (légèrement &gt; 0M)", faibC:"Pas d'export ni hôtels An 1",
   },
   {
     id:2, label:"50 M", icon:"⭐", color:C.p50, tag:"CONFORT",
@@ -164,7 +164,7 @@ const PALIERS = [
     ],
     emplois:18, payback:3.0, recommande:false,
     verdict:"Revenu absolu très solide (~25,7M net An3). Accès marchés restaurants haut de gamme et hôtels Saly. Complexité opérationnelle nécessitant un chef d'exploitation à plein temps (150-200K/mois).",
-    forceA:"Volume export CEDEAO possible", forceB:"Net An3 > 25M FCFA", forceC:"Pickup = logistique professionnelle",
+    forceA:"Volume export CEDEAO possible", forceB:"Net An3 &gt; 5M FCFA", forceC:"Pickup = logistique professionnelle",
     faibA:"Nécessite chef exploitation", faibB:"Foncier Niayes 6M one-shot", faibC:"Capital élevé → ROI % moindre",
   },
   {

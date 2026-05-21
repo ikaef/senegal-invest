@@ -282,7 +282,7 @@ const SLIDES = [
           ))}
         </div>
         <div style={{background:C.accent+"18",border:`1px solid ${C.accent}44`,borderRadius:"6px",padding:"1rem",fontSize:"0.85rem",color:C.text}}>
-          <strong style={{color:C.accentLight}}>Principe de triangulation :</strong> 1 canal volume (grossiste) + 1 canal marge (restaurant) + 1 canal premium (WhatsApp). Ne jamais dépendre d'un seul acheteur. Jamais un seul acheteur > 30% du CA.
+          <strong style={{color:C.accentLight}}>Principe de triangulation :</strong> 1 canal volume (grossiste) + 1 canal marge (restaurant) + 1 canal premium (WhatsApp). Ne jamais dépendre d'un seul acheteur. Jamais un seul acheteur &gt; 30% du CA.
         </div>
       </div>
     )

@@ -44,7 +44,7 @@ const PESTEL = [
   { l:"S", label:"Sociodémographique", color:C.greenLight, points:[
     { s:"+", t:"Urbanisation 45→55% d'ici 2030", d:"Demande alimentaire urbaine structurellement sous-fournie. Restauration collective, livraison à domicile et GMS en forte expansion." },
     { s:"+", t:"Valorisation culturelle de l'élevage ovin", d:"Le mouton Ladoum est un marqueur de statut social. Demande pour les races améliorées culturellement pérenne et en hausse. Instagram = canal de vente organique." },
-    { s:"+", t:"Révolution Wave Mobile Money", d:"Pénétration > 80% des ménages. Paiement B2C instantané sans frais. WhatsApp + Wave = canal de vente direct à marge maximale, coût acquisition nul." },
+    { s:"+", t:"Révolution Wave Mobile Money", d:"Pénétration &gt; 0% des ménages. Paiement B2C instantané sans frais. WhatsApp + Wave = canal de vente direct à marge maximale, coût acquisition nul." },
     { s:"+", t:"Population jeune (âge médian 19 ans)", d:"Main d'œuvre agricole jeune et disponible à des salaires raisonnables. Main d'œuvre saisonnière abondante dans les zones rurales." },
   ]},
   { l:"T", label:"Technologique", color:C.blue, points:[

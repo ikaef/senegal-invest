@@ -397,7 +397,7 @@ function TabRisques() {
           "Vendre toute la récolte oignon en mars à 200 FCFA/kg au lieu de stocker pour juin à 700 FCFA/kg",
           "Ouvrir Instagram pour l'élevage ovin trop tard — le carnet de commandes Tabaski se remplit 3–4 mois avant",
           "Recruter la famille sans contrat écrit — source n°1 de conflits irrémédiables dans les exploitations diaspora",
-          "Accepter un délai de paiement > 7 jours avec les premiers clients restaurants (impayés = trésorerie compromise)",
+          "Accepter un délai de paiement &gt;  jours avec les premiers clients restaurants (impayés = trésorerie compromise)",
           "Utiliser le fonds de roulement pour de la construction — il doit rester intouché jusqu'à la première récolte",
         ].map((e,i)=>(
           <div key={i} style={{display:"flex",gap:"0.75rem",marginBottom:"0.6rem"}}>
