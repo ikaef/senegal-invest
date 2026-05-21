@@ -34,17 +34,36 @@ export async function middleware(req) {
     const { data: { user }, error } = await supabase.auth.getUser()
     if (error || !user) return NextResponse.redirect(new URL('/login', req.url))
 
-    const { data: profile } = await supabase
-      .from('profiles').select('role, actif').eq('id', user.id).single()
+    // Utiliser le service role pour lire le profil (contourne le RLS)
+    const adminSupabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
+      {
+        cookies: {
+          getAll() { return req.cookies.getAll() },
+          setAll() {},
+        },
+      }
+    )
 
-    if (!profile || !profile.actif) return NextResponse.redirect(new URL('/login?reason=suspended', req.url))
+    const { data: profile } = await adminSupabase
+      .from('profiles')
+      .select('role, actif')
+      .eq('id', user.id)
+      .single()
 
-    if (pathname.startsWith('/admin') && profile.role !== 'admin')
+    if (!profile || !profile.actif) {
+      return NextResponse.redirect(new URL('/login?reason=suspended', req.url))
+    }
+
+    if (pathname.startsWith('/admin') && profile.role !== 'admin') {
       return NextResponse.redirect(new URL('/dashboard', req.url))
+    }
 
     const docMatch = pathname.match(/^\/documents\/([a-z]+)/)
-    if (docMatch && !ROLE_PERMISSIONS[profile.role]?.includes(docMatch[1]))
+    if (docMatch && !ROLE_PERMISSIONS[profile.role]?.includes(docMatch[1])) {
       return NextResponse.redirect(new URL('/dashboard?denied=1', req.url))
+    }
 
     return res
   } catch {
