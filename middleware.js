@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import { createClient } from '@supabase/supabase-js'
 
 const ROLE_PERMISSIONS = {
   admin: ['comparaison', 'marche', 'businessplan', 'pitch', 'fournisseurs', 'admin'],
@@ -32,41 +33,37 @@ export async function middleware(req) {
     )
 
     const { data: { user }, error } = await supabase.auth.getUser()
+    console.log('[middleware] user:', user?.id, 'error:', error?.message)
     if (error || !user) return NextResponse.redirect(new URL('/login', req.url))
 
-    // Utiliser le service role pour lire le profil (contourne le RLS)
-    const adminSupabase = createServerClient(
+    const adminClient = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.SUPABASE_SERVICE_ROLE_KEY,
-      {
-        cookies: {
-          getAll() { return req.cookies.getAll() },
-          setAll() {},
-        },
-      }
+      { auth: { autoRefreshToken: false, persistSession: false } }
     )
 
-    const { data: profile } = await adminSupabase
+    const { data: profile, error: profileError } = await adminClient
       .from('profiles')
       .select('role, actif')
       .eq('id', user.id)
       .single()
 
+    console.log('[middleware] profile:', JSON.stringify(profile), 'profileError:', profileError?.message)
+
     if (!profile || !profile.actif) {
       return NextResponse.redirect(new URL('/login?reason=suspended', req.url))
     }
 
-    if (pathname.startsWith('/admin') && profile.role !== 'admin') {
+    if (pathname.startsWith('/admin') && profile.role !== 'admin')
       return NextResponse.redirect(new URL('/dashboard', req.url))
-    }
 
     const docMatch = pathname.match(/^\/documents\/([a-z]+)/)
-    if (docMatch && !ROLE_PERMISSIONS[profile.role]?.includes(docMatch[1])) {
+    if (docMatch && !ROLE_PERMISSIONS[profile.role]?.includes(docMatch[1]))
       return NextResponse.redirect(new URL('/dashboard?denied=1', req.url))
-    }
 
     return res
-  } catch {
+  } catch (e) {
+    console.log('[middleware] exception:', e.message)
     return NextResponse.redirect(new URL('/login', req.url))
   }
 }
